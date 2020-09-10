@@ -1,5 +1,4 @@
-import os
-import time
+import os, time
 def f_s(l):
     a = l[l.rfind(' ')+1:-1]
     return a[a.rfind('/')+1:]
@@ -10,8 +9,7 @@ p_s = [f_s(l)[f_s(l).rfind('/')+1:] for l in os.popen('sudo cat /etc/shells').re
 b_s = [l_s(l, 1) for l in os.popen('sudo ps -aux').readlines()[1:] if f_s(l) in p_s]
 o_l = os.popen('sudo systemctl -a --plain').readlines()
 c_s = dict((l_s(l, 0), l_s(l, 2)) for l in o_l[:o_l.index("\n")])
-i_p = [l for l in os.popen('sudo cat /etc/passwd').readlines()]
-i_s = [l for l in os.popen('sudo cat /etc/shadow').readlines()]
+i_p = os.popen('(sudo cat /etc/passwd | awk \'{print "PWD: " $0}\' && sudo cat /etc/shadow | awk \'{print "SHD: " $0}\')').readlines()
 while True:
     time.sleep(0.1)
     o_l = os.popen('sudo ps -aux').readlines()[1:]
@@ -28,16 +26,11 @@ while True:
         c_s[l_s(l, 0)] = l_s(l, 2)
     for p in [l for l in c_s.keys() if l not in [l_s(k, 0) for k in o_l]]:
         print("SRV DEL -> " + p + 0*c_s.pop(p, None))
-    o_l = os.popen('sudo cat /etc/passwd').readlines()
+    o_l = os.popen('(sudo cat /etc/passwd | awk \'{print "PWD: " $0}\' && sudo cat /etc/shadow | awk \'{print "SHD: " $0}\')').readlines()
     for l in (l for l in i_p if l not in o_l):
-        print('PSW DEL: ' + i_p.pop(i_p.index(l))[:-1])
+        print('DEL ' + i_p.pop(i_p.index(l))[:-1])
     for l in (l for l in o_l if l not in i_p):
-        print('PSW ADD: ' + (l[:-1] + str(i_p.append(l) is None) * 0))
-    o_l = os.popen('sudo cat /etc/shadow').readlines()
-    for l in (l for l in i_s if l not in o_l):
-        print('SHD DEL: ' + i_s.pop(i_s.index(l))[:-1])
-    for l in (l for l in o_l if l not in i_s):
-        print('SHD ADD: ' + (l[:-1] + str(i_s.append(l) is None) * 0))
+        print('ADD ' + (l[:-1] + str(i_p.append(l) is None) * 0))
 # f_s - Find Shell in ps Line
 # g_p - Get pid from line
 # l_v - Get Service from Line

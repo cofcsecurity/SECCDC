@@ -1,2 +1,1 @@
-# SECCDC
-Scripts for SECCDC
+SecScripts
