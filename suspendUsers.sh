@@ -35,7 +35,7 @@ EOF
 
     echo "(Warned $1, now sleeping for $secs)"
 
-    jobs=$(ps -u $1 | cut -d\  -f1)
+    jobs=$(ps -u $1 | cut -d\ -f1)
     
     kill -s HUP $jobs
     sleep 1
