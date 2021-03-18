@@ -25,5 +25,6 @@
       yum:
         name: clamav.x86_64
         state: present
-      yum: nikto.noarch
+      yum: 
+        name: nikto.noarch
         state: present
