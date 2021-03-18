@@ -1,5 +1,5 @@
 ---
-- name: install common software on redhat
+- name: configure redhat machines
   hosts: redhat
   become: yes
   tasks:
