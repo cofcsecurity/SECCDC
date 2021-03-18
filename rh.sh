@@ -23,23 +23,13 @@ echo "alias net-pf-5 off # Appletalk" >> /etc/modules.conf
 echo "alias net-pf-10 off # IPv6" >> /etc/modules.conf
 echo "alias net-pf-12 off # Decnet" >> /etc/modules.conf 
 sudo yum install net-tools nikto.noarch nmap wireshark lynis clamav.x86_64 -y
-yum install fail2ban fail2ban-system -y
 yum update -y selinux-policy*
-sudo systemctl start fail2ban
-sudo systemctl enable fail2ban
-echo "[sshd]" >> /etc/fail2ban/jail.d/sshd.local
-echo "enabled = true" >> /etc/fail2ban/jail.d/sshd.local
-echo "port = 22" >> /etc/fail2ban/jail.d/sshd.local
-echo "logpath = /var/log/auth.log" >> /etc/fail2ban/jail.d/sshd.local
-echo "maxretry = 3" >> /etc/fail2ban/jail.d/sshd.local
-echo "bantime = 86400" >> /etc/fail2ban/jail.d/sshd.local
-sudo systemctl restart fail2ban
 #for the email server
 adduser pmccabe
 adduser dmeeder
-adduser spappas
+adduser rclarke
 adduser mwalter
 adduser lmcguire
-adduser cmyers
-adduser bbillings
-adduser nkakadia
+adduser shinson
+adduser ctaylor
+adduser istapleton
