@@ -8,23 +8,22 @@
         update_cache: yes
     - name: install tools
       yum:
-        name: nmap*
+        name: nmap
         state: present
       yum:
-        name: ufw*
+        name: ufw.noarch
         state: present
       yum:
-        name: tmux*
+        name: tmux.x86_64
         state: present
       yum:
-        name: tcpdump*
+        name: tcpdump.x86_64
         state: present
       yum:
-        name: lynis*
+        name: lynis.noarch
         state: present
       yum:
-        name: clamav*
+        name: clamav.x86_64
         state: present
-      yum:
-        name: nikto*
+      yum: nikto.noarch
         state: present
