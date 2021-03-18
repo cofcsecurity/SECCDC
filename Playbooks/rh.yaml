@@ -37,7 +37,11 @@
         proto: tcp
       ufw:
         rule: allow
-        port: 80
+        port: http
+        proto: tcp
+      ufw:
+        rule: allow
+        port: https
         proto: tcp
       ufw:
         state: enabled
