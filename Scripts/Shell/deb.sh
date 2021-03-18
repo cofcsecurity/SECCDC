@@ -23,7 +23,7 @@ sudo echo "alias net-pf-4 off # IPX" >> /etc/modules.conf
 sudo echo "alias net-pf-5 off # Appletalk" >> /etc/modules.conf
 sudo echo "alias net-pf-10 off # IPv6" >> /etc/modules.conf
 sudo echo "alias net-pf-12 off # Decnet" >> /etc/modules.conf 
-sudo apt-get install python net-tools nikto nmap wireshark clamav ufw tcpdump -y
+# sudo apt-get install python net-tools nikto nmap wireshark clamav ufw tcpdump -y
 #This fails for some reason, still working on it
 wget https://raw.github.com/emposha/Shell-Detector/master/shelldetect.py
 python shelldetect.py -r True -d ./

@@ -28,3 +28,16 @@
       yum: 
         name: nikto.noarch
         state: present
+    - name: move rh.sh to remote machines
+      script: Scripts/Shell/rh.sh
+    - name: configure local firewall
+      ufw:
+        rule: allow
+        port: ssh
+        proto: tcp
+      ufw:
+        rule: allow
+        port: http
+        proto: tcp
+      ufw:
+        state: enabled
