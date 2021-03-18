@@ -4,8 +4,8 @@
   become: yes
   tasks:
     - name: update repos
-    - yum:
-      update_cache: yes
+      - yum:
+          update_cache: yes
     - name: install tools
       - yum:
         - name: nmap*
