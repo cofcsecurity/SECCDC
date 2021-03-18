@@ -1,0 +1,30 @@
+---
+- name: install common software on redhat
+  hosts: debian
+  become: yes
+  tasks:
+    - name: update repos
+      apt:
+        update_cache: yes
+    - name: install tools
+      apt:
+        name: nmap
+        state: present
+      apt:
+        name: ufw
+        state: present
+      apt:
+        name: tmux
+        state: present
+      apt:
+        name: tcpdump
+        state: present
+      apt:
+        name: lynis
+        state: present
+      apt:
+        name: clamav
+        state: present
+      apt: 
+        name: nikto
+        state: present
