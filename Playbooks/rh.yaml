@@ -1,31 +1,30 @@
 ---
-- name: configure redhat machines
+- name: install common software on redhat
   hosts: redhat
   become: yes
   tasks:
-    - name: install software
-      - name: update repos
-        yum:
-          update_cache: yes
-      - name: install tools
-        yum:
-          name: nmap
-          state: present
-        yum:
-          name: ufw.noarch
-          state: present
-        yum:
-          name: tmux.x86_64
-          state: present
-        yum:
-          name: tcpdump.x86_64
-          state: present
-        yum:
-          name: lynis.noarch
-          state: present
-        yum:
-          name: clamav.x86_64
-          state: present
-        yum: 
-          name: nikto.noarch
-          state: present
+    - name: update repos
+      yum:
+        update_cache: yes
+    - name: install tools
+      yum:
+        name: nmap
+        state: present
+      yum:
+        name: ufw.noarch
+        state: present
+      yum:
+        name: tmux.x86_64
+        state: present
+      yum:
+        name: tcpdump.x86_64
+        state: present
+      yum:
+        name: lynis.noarch
+        state: present
+      yum:
+        name: clamav.x86_64
+        state: present
+      yum: 
+        name: nikto.noarch
+        state: present
