@@ -5,7 +5,7 @@
   tasks:
     - name: update repos
       - yum:
-          update_cache: yes
+        - update_cache: yes
     - name: install tools
       - yum:
         - name: nmap*
