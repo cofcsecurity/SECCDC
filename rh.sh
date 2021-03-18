@@ -33,3 +33,5 @@ adduser lmcguire
 adduser shinson
 adduser ctaylor
 adduser istapleton
+
+df -h
