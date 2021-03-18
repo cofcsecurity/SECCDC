@@ -22,7 +22,7 @@ echo "alias net-pf-4 off # IPX" >> /etc/modules.conf
 echo "alias net-pf-5 off # Appletalk" >> /etc/modules.conf
 echo "alias net-pf-10 off # IPv6" >> /etc/modules.conf
 echo "alias net-pf-12 off # Decnet" >> /etc/modules.conf 
-sudo yum install net-tools nikto.noarch nmap wireshark lynis clamav.x86_64 -y
+sudo yum install net-tools nikto.noarch nmap wireshark lynis clamav.x86_64 ufw.noarch -y
 yum update -y selinux-policy*
 #for the email server
 adduser pmccabe
