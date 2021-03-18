@@ -1,0 +1,30 @@
+---
+- name: install common software on redhat
+  hosts: redhat
+  become: yes
+  tasks:
+    - name: update repos
+    - yum:
+      update_cache: yes
+    - name: install tools
+      - yum:
+        - name: nmap*
+        - state: present
+      - yum:
+        - name: ufw*
+        - state: present
+      - yum:
+        - name: tmux*
+        - state: present
+      - yum:
+        - name: tcpdump*
+        - state: present
+      - yum:
+        - name: lynis*
+        - state: present
+      - yum:
+        - name: clamav*
+        - state: present
+      - yum:
+        - name: nikto*
+        - state: present
