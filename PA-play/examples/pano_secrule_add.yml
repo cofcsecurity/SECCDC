@@ -1,0 +1,63 @@
+- name: Add some security rules to Panorama
+  hosts: my-panorama
+  connection: local
+  gather_facts: False
+
+  roles:
+    - role: PaloAltoNetworks.paloaltonetworks
+
+  tasks:
+  - name: Grab the credentials from ansible-vault
+    include_vars: 'panorama-secrets.yml'
+    no_log: 'yes'
+
+  - name: Add test pre-rule to Panorama
+    panos_security_rule:
+      ip_address: '{{ ip_address }}'
+      username: '{{ username }}'
+      password: '{{ password }}'
+      operation: 'add'
+      rule_name: 'Ansible test 1'
+      description: 'An Ansible test pre-rule'
+      source_zone: ['internal']
+      destination_zone: ['external']
+      source_ip: ['1.2.3.4']
+      source_user: ['any']
+      destination_ip: ['any']
+      category: ['any']
+      application: ['any']
+      service: ['service-http']
+      hip_profiles: ['any']
+      action: 'allow'
+      devicegroup: 'DeviceGroupA'
+      commit: 'False'
+
+  - name: Add test post-rule to Panorama
+    panos_security_rule:
+      ip_address: '{{ ip_address }}'
+      username: '{{ username }}'
+      password: '{{ password }}'
+      operation: 'add'
+      rule_name: 'Ansible test 2'
+      description: 'Another Ansible test post-rule'
+      source_zone: ['internal']
+      source_ip: ['192.168.100.100']
+      source_user: ['any']
+      hip_profiles: ['any']
+      destination_zone: ['external']
+      destination_ip: ['any']
+      category: ['any']
+      application: ['any']
+      service: ['service-https']
+      action: 'allow'
+      devicegroup: 'DeviceGroupA'
+      is_post_rule: "True"
+      commit: 'True'
+
+
+#  - name: push configuration to firewall(s)
+#    panos_commit:
+#      ip_address: '{{ ip_address }}'
+#      username: '{{ username }}'
+#      password: '{{ password }}'
+#      devicegroup: 'DeviceGroupA'
