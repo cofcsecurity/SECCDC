@@ -35,15 +35,15 @@
         state: reset
       ufw:
         rule: allow
-        port: ssh
+        port: 22
         proto: tcp
       ufw:
         rule: allow
-        port: http
+        port: 80
         proto: tcp
       ufw:
         rule: allow
-        port: https
+        port: 443
         proto: tcp
       ufw:
         state: enabled
