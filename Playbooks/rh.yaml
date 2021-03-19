@@ -32,18 +32,16 @@
     #   script: ../Scripts/Shell/rh.sh
     - name: configure local firewall
       ufw:
-        state: reset
-      ufw:
         rule: allow
-        port: 22
+        port: ssh
         proto: tcp
       ufw:
         rule: allow
-        port: 80
+        port: http
         proto: tcp
       ufw:
         rule: allow
-        port: 443
+        port: https
         proto: tcp
       ufw:
         state: enabled
