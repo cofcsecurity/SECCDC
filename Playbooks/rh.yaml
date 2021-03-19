@@ -32,8 +32,6 @@
     #   script: ../Scripts/Shell/rh.sh
     - name: configure local firewall
       ufw:
-        state: reset
-      ufw:
         rule: allow
         port: ssh
         proto: tcp
