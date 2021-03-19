@@ -43,5 +43,4 @@
         rule: allow
         port: https
         proto: tcp
-      ufw:
-        state: enabled
+        state: reloaded
