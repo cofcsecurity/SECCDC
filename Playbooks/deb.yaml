@@ -28,18 +28,18 @@
       apt: 
         name: wapiti
         state: present
-    - name: configure local firewall
-      ufw:
-        rule: allow
-        port: ssh
-        proto: tcp
-      ufw:
-        rule: allow
-        port: http
-        proto: tcp
-      ufw:
-        rule: allow
-        port: https
-        proto: tcp
-      ufw:
-        state: enabled
+    # - name: configure local firewall
+    #   ufw:
+    #     rule: allow
+    #     port: ssh
+    #     proto: tcp
+    #   ufw:
+    #     rule: allow
+    #     port: http
+    #     proto: tcp
+    #   ufw:
+    #     rule: allow
+    #     port: https
+    #     proto: tcp
+    #   ufw:
+    #     state: enabled
