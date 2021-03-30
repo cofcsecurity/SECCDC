@@ -1,0 +1,7 @@
+---
+- name: backup linux servers
+hosts: linux
+become: yes
+tasks:
+  - name: backup /etc files
+    command: tar czf /home/backups/backup
