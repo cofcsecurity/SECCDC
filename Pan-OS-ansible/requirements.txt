@@ -1,5 +1,5 @@
 -i https://pypi.org/simple/
-certifi==2020.12.5
+certifi==2021.5.30
 chardet==3.0.4
 idna==2.8
 pan-os-python==1.0.2
